@@ -8,7 +8,7 @@
   <meta name="author" content="Icanux">
   <title>Icanux</title>
   <!-- Favicon -->
-  <link href="{{ asset('images/help.ico') }}" rel="icon" type="image/ico">
+  <link href="{{ secure_asset('images/help.ico') }}" rel="icon" type="image/ico">
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
@@ -16,7 +16,7 @@
   <!-- Icons -->
   <link href="{{ secure_asset('argon/vendor/nucleo/css/nucleo.css') }}" rel="stylesheet">
   <link href="{{ secure_asset('argon/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
-  <link rel='stylesheet prefetch' href='http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css'>
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css'>
   <!-- Argon CSS -->
   <link type="text/css" href="{{ secure_asset('argon/css/argon.css?v=1.0.1') }}" rel="stylesheet">
   <link href="{{ secure_asset('argon/vendor/nucleo/css/nucleo.css') }}" rel="stylesheet">
@@ -62,7 +62,7 @@
                 <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom">
                   <div class="container">
                     <a class="navbar-brand mr-lg-5" href="/">
-                      <img src="{{ asset('images/icanux.png') }}" alt="Rounded image" class="img-fluid rounded shadow" style="width:50px;height:auto;"> Icanux
+                      <img src="{{ secure_asset('images/icanux.png') }}" alt="Rounded image" class="img-fluid rounded shadow" style="width:50px;height:auto;"> Icanux
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
                       <span class="navbar-toggler-icon"></span>
@@ -72,7 +72,7 @@
                         <div class="row">
                           <div class="col-6 collapse-brand">
                             <a href="/">
-                              <img src="{{ asset('images/icanux.png') }}" alt="Rounded image" class="img-fluid rounded shadow" style="width:50px;height:auto;"> Icanux
+                              <img src="{{ secure_asset('images/icanux.png') }}" alt="Rounded image" class="img-fluid rounded shadow" style="width:50px;height:auto;"> Icanux
                             </a>
                           </div>
                           <div class="col-6 collapse-close">
@@ -115,7 +115,7 @@
                             <div class="dropdown">
                               <button class="btn btn-secondary bg-transparent border-none dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border:none;box-shadow:none;">
                                   <small class="text-white font-weight-bold">{{Auth::user()->nombres .' '. Auth::user()->apellidos}}</small>
-                                  <img src="{{ asset('images/users/default.jpg') }}" class="rounded-circle" style="height: 28px;">
+                                  <img src="{{ secure_asset('images/users/default.jpg') }}" class="rounded-circle" style="height: 28px;">
                               </button>
                               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                   <a class="dropdown-item" href="{{ route('perfil') }}">Mi perfil</a>
