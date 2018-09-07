@@ -28,7 +28,7 @@ Route::fallback('HomeController@notFound');
 | REGISTRO
 |--------------------------------------------------------------------------
 */
-Route::post('/registerUser','auth\RegisterController@registerUser')->name('registerUser');
+Route::post('/registerUser','Auth\RegisterController@registerUser')->name('registerUser');
 
 /*
 |--------------------------------------------------------------------------

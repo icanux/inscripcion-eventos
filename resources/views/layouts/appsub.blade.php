@@ -62,7 +62,7 @@
                 <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom">
                   <div class="container">
                     <a class="navbar-brand mr-lg-5" href="/">
-                      <img src="images/icanux.png" alt="Rounded image" class="img-fluid rounded shadow" style="width:50px;height:auto;"> Icanux
+                      <img src="../images/icanux.png" alt="Rounded image" class="img-fluid rounded shadow" style="width:50px;height:auto;"> Icanux
                     </a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" aria-label="Toggle navigation">
                       <span class="navbar-toggler-icon"></span>
