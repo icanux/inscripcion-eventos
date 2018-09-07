@@ -14,17 +14,17 @@
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <!-- Icons -->
   <!-- Icons -->
-  <link href="{{ asset('argon/vendor/nucleo/css/nucleo.css') }}" rel="stylesheet">
-  <link href="{{ asset('argon/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+  <link href="{{ secure_asset('argon/vendor/nucleo/css/nucleo.css') }}" rel="stylesheet">
+  <link href="{{ secure_asset('argon/vendor/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
   <link rel='stylesheet prefetch' href='http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css'>
   <!-- Argon CSS -->
-  <link type="text/css" href="{{ asset('argon/css/argon.css?v=1.0.1') }}" rel="stylesheet">
-  <link href="{{ asset('argon/vendor/nucleo/css/nucleo.css') }}" rel="stylesheet">
+  <link type="text/css" href="{{ secure_asset('argon/css/argon.css?v=1.0.1') }}" rel="stylesheet">
+  <link href="{{ secure_asset('argon/vendor/nucleo/css/nucleo.css') }}" rel="stylesheet">
 
   <!-- Docs CSS -->
-  <link type="text/css" href="{{ asset('css/card.css') }}" rel="stylesheet">
-  <link type="text/css" href="{{ asset('css/custom.css') }}" rel="stylesheet">
-  <script src="{{ asset('argon/vendor/jquery/jquery.min.js') }}"></script>
+  <link type="text/css" href="{{ secure_asset('css/card.css') }}" rel="stylesheet">
+  <link type="text/css" href="{{ secure_asset('css/custom.css') }}" rel="stylesheet">
+  <script src="{{ secure_asset('argon/vendor/jquery/jquery.min.js') }}"></script>
 
 </head>
 
@@ -180,20 +180,20 @@
               </div>
   </footer>
   <!-- Core -->
-  <script src="{{ asset('argon/vendor/popper/popper.min.js') }}"></script>
-  <script src="{{ asset('argon/vendor/bootstrap/bootstrap.min.js') }}"></script>
-  <script src="{{ asset('argon/vendor/headroom/headroom.min.js') }}"></script>
-  <script src="{{ asset('argon/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+  <script src="{{ secure_asset('argon/vendor/popper/popper.min.js') }}"></script>
+  <script src="{{ secure_asset('argon/vendor/bootstrap/bootstrap.min.js') }}"></script>
+  <script src="{{ secure_asset('argon/vendor/headroom/headroom.min.js') }}"></script>
+  <script src="{{ secure_asset('argon/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
 
   <!--  Notifications Plugin    -->
-  <script src="{{ asset('js/bootstrap-notify.js') }}"></script>
-  <script src="{{ asset('js/custom.js') }}"></script>
+  <script src="{{ secure_asset('js/bootstrap-notify.js') }}"></script>
+  <script src="{{ secure_asset('js/custom.js') }}"></script>
 
-  <script src="{{ asset('js/procesos/perfil.js') }}"></script>
+  <script src="{{ secure_asset('js/procesos/perfil.js') }}"></script>
 
   <!-- Argon JS -->
-  <script src="{{ asset('argon/js/argon.js?v=1.0.1') }}"></script>
-  <script src="{{ asset('js/card.js') }}"></script>
+  <script src="{{ secure_asset('argon/js/argon.js?v=1.0.1') }}"></script>
+  <script src="{{ secure_asset('js/card.js') }}"></script>
 
   
 </body>
