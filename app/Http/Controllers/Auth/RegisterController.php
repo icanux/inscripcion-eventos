@@ -90,7 +90,9 @@ class RegisterController extends Controller
                 'nombres' => trim($request->nombres),
                 'apellidos' => trim($request->apellidos),
                 'email' => trim($request->email),
-                'password' => bcrypt(trim($request->password))
+                'password' => bcrypt(trim($request->password)),
+                'tipo'=> 1,
+                'estado'=>1
             ]);
     
             if($user->save())
