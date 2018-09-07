@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.appsub')
 
 @section('content')
 
@@ -22,7 +22,7 @@
           <div class="col px-0">
                 <div class="row align-items-center justify-content-center">
                         <div class="col-12 text-center">
-                          <img src="{{ asset('images/eventos/'.$evento->imagen) }}" style="width: 200px;" class="img-fluid">
+                          <img src="../images/eventos/{{$evento->imagen}}" style="width: 200px;" class="img-fluid">
                             <p class="lead text-white">{{$evento->nombre}}</p>
 
                             <div class="row">
@@ -43,17 +43,17 @@
                                                 </div>
                                                 <div class="d-flex w-100 text-center justify-content-center">
                                                     
-                                                        <a id="cancelarInscripcion" class="btn btn-icon btn-3 bg-danger text-white" href="/inscripcion/{{$evento->id}}/{{0}}/0">
+                                                        <a id="cancelarInscripcion" class="btn btn-icon btn-3 bg-danger text-white" href="../inscripcion/{{$evento->id}}/{{0}}/0">
                                                             <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
                                                             <span class="btn-inner--text">Cancelar Mi Inscripcion</span>
                                                         </a>
                                                         @if($eventosUser[0]->certificado==1)
-                                                            <a id="inscripcion" class="btn btn-icon btn-3 bg-warning text-white" href="/inscripcion/{{$evento->id}}/1/0">
+                                                            <a id="inscripcion" class="btn btn-icon btn-3 bg-warning text-white" href="../inscripcion/{{$evento->id}}/1/0">
                                                                 <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
                                                                 <span class="btn-inner--text">Cancelar Certificado</span>
                                                             </a>
                                                         @else
-                                                            <a id="inscripcion" class="btn btn-icon btn-3 bg-primary text-white" href="/inscripcion/{{$evento->id}}/1/1">
+                                                            <a id="inscripcion" class="btn btn-icon btn-3 bg-primary text-white" href="../inscripcion/{{$evento->id}}/1/1">
                                                                 <span class="btn-inner--icon"><i class="ni ni-paper-diploma"></i></span>
                                                                 <span class="btn-inner--text">Solicitar Certificado</span>
                                                             </a>
@@ -69,7 +69,7 @@
                                                     </div>
                                                 </div>
                                                 <div class="d-block w-100 text-center">
-                                                        <a id="inscripcion" class="btn btn-icon btn-3 bg-primary text-white" href="/inscripcion/{{$evento->id}}/{{1}}/{{0}}">
+                                                        <a id="inscripcion" class="btn btn-icon btn-3 bg-primary text-white" href="../inscripcion/{{$evento->id}}/{{1}}/{{0}}">
                                                             <span class="btn-inner--icon"><i class="ni ni-check-bold"></i></span>
                                                             <span class="btn-inner--text">Inscribirme</span>
                                                         </a>
@@ -81,7 +81,7 @@
                                 
                             </div>
                           <div class="btn-wrapper mt-5">
-                            <a href="/eventos" class="btn btn-lg btn-github btn-icon mb-sm-0">
+                            <a href="../eventos" class="btn btn-lg btn-github btn-icon mb-sm-0">
                               <span class="btn-inner--icon"><i class="ni ni-calendar-grid-58"></i></span>
                               <span class="btn-inner--text">Ver Todos Los Eventos</span>
                             </a>
@@ -216,24 +216,24 @@
                                                                     <h3>Elmer Ramos</h3>
                                                                     <h4><strong>Taller:</strong> Introduccion a Python</h4>
                                                                     <div class="people w-100">
-                                                                        <img src="{{ asset('images/ponentes/default.jpg') }}" alt="" />
+                                                                        <img src="../images/ponentes/default.jpg" alt="" />
                                                                     </div>
                                                                     <span class="text-white bg-primary p-1 border-round">Taller 2</span>
                                                                     <h3>Cristhian Quispe</h3>
                                                                     <h4><strong>Taller:</strong> Introduccion a Laravel</h4>
                                                                     <div class="people w-100">
-                                                                        <img src="{{ asset('images/ponentes/default.jpg') }}" alt="" />
+                                                                        <img src="../images/ponentes/default.jpg" alt="" />
                                                                     </div>
                                                                     <span class="text-white bg-warning p-1 border-round">Ponencia</span>
                                                                     <h3>Oliver</h3>
                                                                     <h4><strong>Ponencia:</strong> Python</h4>
                                                                     <div class="people w-100">
-                                                                        <img src="{{ asset('images/ponentes/default.jpg') }}" alt="" />
+                                                                        <img src="../images/ponentes/default.jpg" alt="" />
                                                                     </div>
                                                                     <h3>Sabastisagal</h3>
                                                                     <h4><strong>Ponencia:</strong> Seguridad</h4>
                                                                     <div class="people w-100">
-                                                                        <img src="{{ asset('images/ponentes/default.jpg') }}" alt="" />
+                                                                        <img src="../images/ponentes/default.jpg" alt="" />
                                                                     </div>
                                                                 </div>
                                                             </li>
@@ -245,24 +245,24 @@
                                                                         <h3>Lisbeth</h3>
                                                                         <h4><strong>Taller:</strong> Practico </h4>
                                                                         <div class="people w-100">
-                                                                            <img src="{{ asset('images/ponentes/default.jpg') }}" alt="" />
+                                                                            <img src="../images/ponentes/default.jpg" alt="" />
                                                                         </div>
                                                                         <span class="text-white bg-primary p-1 border-round">Taller 2</span>
                                                                         <h3>Anonima</h3>
                                                                         <h4><strong>Taller:</strong> Demostracion de distros</h4>
                                                                         <div class="people w-100">
-                                                                            <img src="{{ asset('images/ponentes/default.jpg') }}" alt="" />
+                                                                            <img src="../images/ponentes/default.jpg" alt="" />
                                                                         </div>
                                                                         <span class="text-white bg-warning p-1 border-round">Ponencia</span>
                                                                         <h3>Solange</h3>
                                                                         <h4><strong>Ponencia:</strong> Python</h4>
                                                                         <div class="people w-100">
-                                                                            <img src="{{ asset('images/ponentes/default.jpg') }}" alt="" />
+                                                                            <img src="images/ponentes/default.jpg" alt="" />
                                                                         </div>
                                                                         <h3>Hernan</h3>
                                                                         <h4><strong>Ponencia:</strong> Seguridad</h4>
                                                                         <div class="people w-100">
-                                                                            <img src="{{ asset('images/ponentes/default.jpg') }}" alt="" />
+                                                                            <img src="images/ponentes/default.jpg" alt="" />
                                                                         </div>
                                                                     </div>
                                                             </li>
@@ -306,7 +306,7 @@
 
         if($('#inscripcion')!=undefined)
         {
-            $('#inscripcion').attr('href','/inscripcion/'+eventosId+'/1/'+certificado);
+            $('#inscripcion').attr('href','../inscripcion/'+eventosId+'/1/'+certificado);
         }
     });
 

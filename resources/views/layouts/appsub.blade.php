@@ -8,23 +8,23 @@
   <meta name="author" content="Icanux">
   <title>Icanux</title>
   <!-- Favicon -->
-  <link href="images/help.ico" rel="icon" type="image/ico">
+  <link href="../images/help.ico" rel="icon" type="image/ico">
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
   <!-- Icons -->
   <!-- Icons -->
-  <link href="argon/vendor/nucleo/css/nucleo.css" rel="stylesheet">
-  <link href="argon/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="../argon/vendor/nucleo/css/nucleo.css" rel="stylesheet">
+  <link href="../argon/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet">
   <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css'>
   <!-- Argon CSS -->
-  <link type="text/css" href="argon/css/argon.css?v=1.0.1" rel="stylesheet">
-  <link href="argon/vendor/nucleo/css/nucleo.css" rel="stylesheet">
+  <link type="text/css" href="../argon/css/argon.css?v=1.0.1" rel="stylesheet">
+  <link href="../argon/vendor/nucleo/css/nucleo.css" rel="stylesheet">
 
   <!-- Docs CSS -->
-  <link type="text/css" href="css/card.css" rel="stylesheet">
-  <link type="text/css" href="css/custom.css" rel="stylesheet">
-  <script src="argon/vendor/jquery/jquery.min.js"></script>
+  <link type="text/css" href="../css/card.css" rel="stylesheet">
+  <link type="text/css" href="../css/custom.css" rel="stylesheet">
+  <script src="../argon/vendor/jquery/jquery.min.js"></script>
 
 </head>
 
@@ -115,7 +115,7 @@
                             <div class="dropdown">
                               <button class="btn btn-secondary bg-transparent border-none dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border:none;box-shadow:none;">
                                   <small class="text-white font-weight-bold">{{Auth::user()->nombres .' '. Auth::user()->apellidos}}</small>
-                                  <img src="images/users/default.jpg') }}" class="rounded-circle" style="height: 28px;">
+                                  <img src="../images/users/default.jpg') }}" class="rounded-circle" style="height: 28px;">
                               </button>
                               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                   <a class="dropdown-item" href="{{ route('perfil') }}">Mi perfil</a>
@@ -180,20 +180,20 @@
               </div>
   </footer>
   <!-- Core -->
-  <script src="argon/vendor/popper/popper.min.js"></script>
-  <script src="argon/vendor/bootstrap/bootstrap.min.js"></script>
-  <script src="argon/vendor/headroom/headroom.min.js"></script>
-  <script src="argon/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
+  <script src="../argon/vendor/popper/popper.min.js"></script>
+  <script src="../argon/vendor/bootstrap/bootstrap.min.js"></script>
+  <script src="../argon/vendor/headroom/headroom.min.js"></script>
+  <script src="../argon/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
 
   <!--  Notifications Plugin    -->
-  <script src="js/bootstrap-notify.js"></script>
-  <script src="js/custom.js"></script>
+  <script src="../js/bootstrap-notify.js"></script>
+  <script src="../js/custom.js"></script>
 
-  <script src="js/procesos/perfil.js"></script>
+  <script src="../js/procesos/perfil.js"></script>
 
   <!-- Argon JS -->
-  <script src="argon/js/argon.js?v=1.0.1"></script>
-  <script src="js/card.js"></script>
+  <script src="../argon/js/argon.js?v=1.0.1"></script>
+  <script src="../js/card.js"></script>
 
   
 </body>
