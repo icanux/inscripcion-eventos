@@ -93,7 +93,7 @@
       </div>
     </section>
   </main>
-  <footer class="footer pt-3 pb-3">
+  {{-- <footer class="footer pt-3 pb-3">
     <div class="container">
       <div class="row align-items-center justify-content-md-between">
         <div class="col-md-6">
@@ -120,7 +120,7 @@
         </div>
       </div>
     </div>
-  </footer>
+  </footer> --}}
   <!-- Core -->
   <script src="argon/vendor/jquery/jquery.min.js"></script>
   <script src="argon/vendor/popper/popper.min.js"></script>

@@ -22,7 +22,7 @@
             <div class="row">
               <div class="col-lg-6">
                 <h1 class="display-3  text-white">Icanux
-                  <span>Comunidad de software lbre</span>
+                  <span>Comunidad de software libre</span>
                 </h1>
                 <p class="lead  text-white">La Comunidad de Software Libre Icanux es una comunidad formada inicialmente por estudiantes de Facultad de Sistemas de la Universidad Nacional "San Luis Gonzaga" de Ica, pero abierta a toda la comunidad iqueña interesada en proyectos FOSS.
                 </p>
