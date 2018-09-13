@@ -47,5 +47,6 @@ Route::get('/miseventos','usuarios\PerfilesController@misEventos');
 |--------------------------------------------------------------------------
 */
 Route::get('/eventos','contenido\EventosController@index')->name('eventos');
-Route::get('/evento/{id}','contenido\EventosController@infoEvento');
-Route::get('/inscripcion/{id}/{accion}/{certificado}','contenido\EventosController@inscripcion')->middleware('auth');
+Route::get('/evento/{id}','contenido\EventosController@infoEvento')->name('evento');
+Route::get('/inscripcion/{id}','contenido\EventosController@inscripcion')->middleware('auth');
+Route::post('/saveInscripcion','contenido\EventosController@saveInscripcion')->middleware('auth');

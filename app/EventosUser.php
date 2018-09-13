@@ -8,7 +8,7 @@ class EventosUser extends Model
 {
     protected $table='eventos_user';
     protected $fillable=[
-        'user_id','eventos_id','certificado','asistencia','estado'
+        'user_id','eventos_id','certificado','asistencia','estado','cronogramas_id'
     ];
 
     //RELACIONES

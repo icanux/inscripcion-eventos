@@ -72,7 +72,7 @@
                         <div class="row">
                           <div class="col-6 collapse-brand">
                             <a href="/">
-                              <img src="images/icanux.png" alt="Rounded image" class="img-fluid rounded shadow" style="width:50px;height:auto;"> Icanux
+                              <img src="../images/icanux.png" alt="Rounded image" class="img-fluid rounded shadow" style="width:50px;height:auto;"> Icanux
                             </a>
                           </div>
                           <div class="col-6 collapse-close">
@@ -115,7 +115,7 @@
                             <div class="dropdown">
                               <button class="btn btn-secondary bg-transparent border-none dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border:none;box-shadow:none;">
                                   <small class="text-white font-weight-bold">{{Auth::user()->nombres .' '. Auth::user()->apellidos}}</small>
-                                  <img src="../images/users/default.jpg') }}" class="rounded-circle" style="height: 28px;">
+                                <img src="../images/users/{{Auth::user()->avatar}}" class="rounded-circle" style="height: 28px;">
                               </button>
                               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                   <a class="dropdown-item" href="{{ route('perfil') }}">Mi perfil</a>
@@ -151,7 +151,7 @@
 
 @yield('content')
 
-  <footer class="footer">
+  {{-- <footer class="footer">
         <div class="container">
                 <div class="row align-items-center justify-content-md-between">
                   <div class="col-md-6">
@@ -178,7 +178,7 @@
                   </div>
                 </div>
               </div>
-  </footer>
+  </footer> --}}
   <!-- Core -->
   <script src="../argon/vendor/popper/popper.min.js"></script>
   <script src="../argon/vendor/bootstrap/bootstrap.min.js"></script>

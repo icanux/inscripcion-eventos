@@ -50,7 +50,7 @@
                     <div class="row mt-5">
                         <div class="col-12">
                             <div class="d-flex">
-                                <div>
+                                <div class="d-xs-none">
                                     <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
                                         <i class="ni ni-hat-3"></i>
                                     </div>
@@ -65,7 +65,7 @@
                     <div class="row mt-5 mb-5">
 
                         @if(count($eventos)>0)
-                            @for($i=0;$i<count($eventos);$i++)
+                            @for($i=0;$i<1;$i++)
 
                             <div class="col-lg-6 col-md-6 col-sm-12">
 
@@ -110,10 +110,10 @@
                                                         </span>
                                                     </div>
                                                     <div class="post-meta mt-0 d-flex mt-4">
-                                                            <button class="btn btn-icon btn-3 btn-primary" type="button">
-                                                                <span class="btn-inner--icon"><i class="ni ni-single-copy-04"></i></span>
-                                                                <span class="btn-inner--text" style="text-transform:none;">Ver detalles</span>
-                                                            </button>
+                                                            <a href="/evento/{{$eventos[$i]["eventoId"]}}" class="btn btn-white">
+                                                                <i class="ni ni-single-copy-04"></i>
+                                                                Ver Detalles
+                                                            </a>
                                                     </div>
                                                 </div>
                                             </div>

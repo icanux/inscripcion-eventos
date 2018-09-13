@@ -1,7 +1,8 @@
 @extends('layouts.appsub')
 
 @section('content')
-
+  <!-- CARD -->
+  <link href='../card/css/rotating-card.css' rel='stylesheet' />
 <main>
     <div class="position-relative">
       <!-- shape Hero -->
@@ -33,47 +34,26 @@
                                             @if(count($eventosUser)>0)
                                                 <h5 class="text-white text-center d-block w-100">Estas inscrito a este evento</h5>
                                                 <div class="d-block w-100 text-center">
-                                                    <div class="custom-control custom-checkbox mb-3 mt-2">
-                                                        @if($eventosUser[0]->certificado==1)
-                                                            <span class="text-white p-2 bg-success border-round">Certificado: <strong>Si</strong></span>
-                                                        @else
-                                                            <span class="text-white p-2 bg-success border-round">Certificado: <strong>No</strong></span>
-                                                        @endif
-                                                    </div>
-                                                </div>
-                                                <div class="d-flex w-100 text-center justify-content-center">
-                                                    
-                                                        <a id="cancelarInscripcion" class="btn btn-icon btn-3 bg-danger text-white" href="../inscripcion/{{$evento->id}}/{{0}}/0">
-                                                            <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
-                                                            <span class="btn-inner--text">Cancelar Mi Inscripcion</span>
-                                                        </a>
-                                                        @if($eventosUser[0]->certificado==1)
-                                                            <a id="inscripcion" class="btn btn-icon btn-3 bg-warning text-white" href="../inscripcion/{{$evento->id}}/1/0">
-                                                                <span class="btn-inner--icon"><i class="ni ni-fat-remove"></i></span>
-                                                                <span class="btn-inner--text">Cancelar Certificado</span>
+                                                        <a id="inscripcion" href="/inscripcion/{{$evento->id}}" class="btn btn-icon btn-3 bg-primary text-white cursor-p">
+                                                                <span class="btn-inner--icon"><i class="ni ni-check-bold"></i></span>
+                                                                <span class="btn-inner--text">Actualizar mi inscripcion</span>
                                                             </a>
-                                                        @else
-                                                            <a id="inscripcion" class="btn btn-icon btn-3 bg-primary text-white" href="../inscripcion/{{$evento->id}}/1/1">
-                                                                <span class="btn-inner--icon"><i class="ni ni-paper-diploma"></i></span>
-                                                                <span class="btn-inner--text">Solicitar Certificado</span>
-                                                            </a>
-                                                        @endif
-                                                    
                                                 </div>
                                             @else
                                                 <h5 class="text-white text-center d-block w-100">Inscribirme al evento</h5>
-                                                <div class="d-block w-100 text-center">
-                                                    <div class="custom-control custom-checkbox mb-3">
-                                                        <input class="custom-control-input" id="certificado" name="certificado" type="checkbox">
-                                                        <label class="custom-control-label text-white" style="padding-top:2px;" for="certificado">Adquirir Certificado</label>
+                                                @if(!Auth::guest())
+
+                                                    <div class="d-block w-100 text-center">
+                                                        <a id="inscripcion" href="/inscripcion/{{$evento->id}}" class="btn btn-icon btn-3 bg-primary text-white cursor-p">
+                                                                <span class="btn-inner--icon"><i class="ni ni-check-bold"></i></span>
+                                                                <span class="btn-inner--text">Inscribirme</span>
+                                                            </a>
                                                     </div>
-                                                </div>
-                                                <div class="d-block w-100 text-center">
-                                                        <a id="inscripcion" class="btn btn-icon btn-3 bg-primary text-white" href="../inscripcion/{{$evento->id}}/{{1}}/{{0}}">
-                                                            <span class="btn-inner--icon"><i class="ni ni-check-bold"></i></span>
-                                                            <span class="btn-inner--text">Inscribirme</span>
-                                                        </a>
-                                                </div>
+                                                @else
+                                                    <div class="d-block w-100 text-center">
+                                                        <h5 class="text-success">Debes estar registrado y haber iniciado sesion para inscribirte al evento.</h5>
+                                                    </div>
+                                                @endif
                                             @endif
             
                                         </div>
@@ -106,7 +86,7 @@
                     <div class="row mt-5">
                         <div class="col-12">
                             <div class="d-flex">
-                                <div>
+                                <div class="d-xs-none">
                                     <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
                                         <i class="ni ni-hat-3"></i>
                                     </div>
@@ -187,97 +167,132 @@
                     <div class="row mt-5">
                             <div class="col-12">
                                 <div class="d-flex">
-                                    <div>
+                                    <div class="d-xs-none">
                                         <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
                                             <i class="ni ni-watch-time"></i>
                                         </div>
                                     </div>
                                     <div class="pl-4 w-100">
                                         <h4 class="display-3 mt-2">Cronograma Del Evento</h4>
-    
-                                        <div class="timelineContainer mt-4">
-                                            
 
-                                                        <div class="timeline">
-                                                          <ul>
-                                                            <li>
-                                                              <div class="bullet green"></div>
-                                                              <div class="time">08:30 am - 09:30 am</div>
-                                                              <div class="desc">
-                                                                <h3>Registro</h3>
-                                                                <h4>Registro de asistentes</h4>
-                                                              </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="bullet green"></div>
-                                                                <div class="time">10:00am - 12:00am</div>
-                                                                <div class="desc pt-3">
-                                                                    <span class="text-white bg-primary p-1 border-round">Taller 1</span>
-                                                                    <h3>Elmer Ramos</h3>
-                                                                    <h4><strong>Taller:</strong> Introduccion a Python</h4>
-                                                                    <div class="people w-100">
-                                                                        <img src="../images/ponentes/default.jpg" alt="" />
-                                                                    </div>
-                                                                    <span class="text-white bg-primary p-1 border-round">Taller 2</span>
-                                                                    <h3>Cristhian Quispe</h3>
-                                                                    <h4><strong>Taller:</strong> Introduccion a Laravel</h4>
-                                                                    <div class="people w-100">
-                                                                        <img src="../images/ponentes/default.jpg" alt="" />
-                                                                    </div>
-                                                                    <span class="text-white bg-warning p-1 border-round">Ponencia</span>
-                                                                    <h3>Oliver</h3>
-                                                                    <h4><strong>Ponencia:</strong> Python</h4>
-                                                                    <div class="people w-100">
-                                                                        <img src="../images/ponentes/default.jpg" alt="" />
-                                                                    </div>
-                                                                    <h3>Sabastisagal</h3>
-                                                                    <h4><strong>Ponencia:</strong> Seguridad</h4>
-                                                                    <div class="people w-100">
-                                                                        <img src="../images/ponentes/default.jpg" alt="" />
-                                                                    </div>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="bullet green"></div>
-                                                                    <div class="time">12:00 am - 01:00 pm</div>
-                                                                    <div class="desc pt-3">
-                                                                        <span class="text-white bg-primary p-1 border-round">Taller 1</span>
-                                                                        <h3>Lisbeth</h3>
-                                                                        <h4><strong>Taller:</strong> Practico </h4>
-                                                                        <div class="people w-100">
-                                                                            <img src="../images/ponentes/default.jpg" alt="" />
-                                                                        </div>
-                                                                        <span class="text-white bg-primary p-1 border-round">Taller 2</span>
-                                                                        <h3>Anonima</h3>
-                                                                        <h4><strong>Taller:</strong> Demostracion de distros</h4>
-                                                                        <div class="people w-100">
-                                                                            <img src="../images/ponentes/default.jpg" alt="" />
-                                                                        </div>
-                                                                        <span class="text-white bg-warning p-1 border-round">Ponencia</span>
-                                                                        <h3>Solange</h3>
-                                                                        <h4><strong>Ponencia:</strong> Python</h4>
-                                                                        <div class="people w-100">
-                                                                            <img src="images/ponentes/default.jpg" alt="" />
-                                                                        </div>
-                                                                        <h3>Hernan</h3>
-                                                                        <h4><strong>Ponencia:</strong> Seguridad</h4>
-                                                                        <div class="people w-100">
-                                                                            <img src="images/ponentes/default.jpg" alt="" />
-                                                                        </div>
-                                                                    </div>
-                                                            </li>
-                                                            <li>
-                                                              <div class="bullet green"></div>
-                                                              <div class="time">01:00 pm</div>
-                                                              <div class="desc">
-                                                                <h3>Culminacion</h3>
-                                                              </div>
-                                                            </li>
-                                                          </ul>
-                                                        </div> 
+                                        <h3 class="h4 text-danger font-weight-bold mb-5">Ponencias</h3>
 
-                                        </div>
+                                        <div class="container cardEventoClass">
+                                            <div class="row">
+                                                <div class="col-12 col-sm-offset-1">
+                                                    <div class="row">
+                                                        @foreach($evento->cronogramas as $cronograma)
 
+                                                            @if($cronograma->estado==1 && $cronograma->tipo==1)
+
+                                                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                                                    <div class="card-container">
+                                                                        <div class="card">
+                                                                            <div class="front">
+                                                                                <div class="cover">
+                                                                                    <img src="/card/images/rotating_card_thumb2.png"/>
+                                                                                </div>
+                                                                                <div class="user">
+                                                                                    <img class="img-circle" src="/images/ponentes/{{$cronograma->imagen}}"/>
+                                                                                </div>
+                                                                                <div class="content">
+                                                                                    <div class="main">
+                                                                                        <h3 class="name">{{$cronograma->titulo}}</h3>
+                                                                                        <p class="profession">{{$cronograma->encargado}}</p>
+                                                                                    </div>
+                                                                                    <div class="d-flex justify-content-center align-items-center">
+                                                                                        <h6 class="bg-primary text-center text-white border-round p-1 pl-2 pr-2 mt-0">Horario: <br><?php echo date('g:i a', strtotime($cronograma->hora_inicio)); ?> - <?php echo date('g:i a', strtotime($cronograma->hora_fin)); ?></h6>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div> <!-- end front panel -->
+                                                                            <div class="back">
+                                                                                <div class="header text-center">
+                                                                                    <span class="text-white bg-warning p-1 border-round">Ponencia</span>
+                                                                                </div>
+                                                                                <div class="content">
+                                                                                    <div class="main">
+                                                                                        <h4 class="text-center">{{$cronograma->encargado}}</h4>
+                                                                                        <p class="text-center">{{$cronograma->titulo}}</p>
+                                                                                        <p class="description">
+                                                                                            <strong>Requisitos: </strong>{{$cronograma->requisitos}}.
+                                                                                        </p>
+                                                                                        <div class="d-flex justify-content-center align-items-center">
+                                                                                                <h6 class="bg-primary text-center text-white border-round p-1 pl-2 pr-2 mt-0">Horario: <br><?php echo date('g:i a', strtotime($cronograma->hora_inicio)); ?> - <?php echo date('g:i a', strtotime($cronograma->hora_fin)); ?></h6>
+                                                                                        </div>
+                                                        
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div> 
+                                                                        </div> 
+                                                                    </div> 
+                                                                </div> 
+                                                    
+                                                            @endif
+                                                        @endforeach
+                                                    </div>
+                                                </div> 
+                                            </div> 
+                                        </div>  
+
+
+                                        <h3 class="h4 text-danger font-weight-bold mb-5">Talleres</h3>
+
+                                        <div class="container cardEventoClass">
+                                            <div class="row">
+                                                <div class="col-12 col-sm-offset-1">
+                                                    <div class="row">
+                                                        @foreach($evento->cronogramas as $cronograma)
+
+                                                            @if($cronograma->estado==1 && $cronograma->tipo==2)
+
+                                                                <div class="col-lg-4 col-md-6 col-sm-6">
+                                                                    <div class="card-container">
+                                                                        <div class="card">
+                                                                            <div class="front">
+                                                                                <div class="cover">
+                                                                                    <img src="/card/images/rotating_card_thumb2.png"/>
+                                                                                </div>
+                                                                                <div class="user">
+                                                                                    <img class="img-circle" src="/images/ponentes/{{$cronograma->imagen}}"/>
+                                                                                </div>
+                                                                                <div class="content">
+                                                                                    <div class="main">
+                                                                                        <h3 class="name">{{$cronograma->titulo}}</h3>
+                                                                                        <p class="profession">{{$cronograma->encargado}}</p>
+                                                                                    </div>
+                                                                                    <div class="d-flex justify-content-center align-items-center">
+                                                                                        <h6 class="bg-primary text-center text-white border-round p-1 pl-2 pr-2 mt-0">Horario: <br><?php echo date('g:i a', strtotime($cronograma->hora_inicio)); ?> - <?php echo date('g:i a', strtotime($cronograma->hora_fin)); ?></h6>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div> <!-- end front panel -->
+                                                                            <div class="back">
+                                                                                <div class="header text-center">
+                                                                                    <span class="text-white bg-success p-1 border-round">Taller</span>
+                                                                                </div>
+                                                                                <div class="content">
+                                                                                    <div class="main">
+                                                                                        <h4 class="text-center">{{$cronograma->encargado}}</h4>
+                                                                                        <p class="text-center">{{$cronograma->titulo}}</p>
+                                                                                        <p class="description">
+                                                                                            <strong>Requisitos: </strong>{{$cronograma->requisitos}}.
+                                                                                        </p>
+                                                                                        <div class="d-flex justify-content-center align-items-center">
+                                                                                                <h6 class="bg-primary text-center text-white border-round p-1 pl-2 pr-2 mt-0">Horario: <br><?php echo date('g:i a', strtotime($cronograma->hora_inicio)); ?> - <?php echo date('g:i a', strtotime($cronograma->hora_fin)); ?></h6>
+                                                                                        </div>
+                                                        
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div> 
+                                                                        </div> 
+                                                                    </div> 
+                                                                </div> 
+                                                    
+                                                            @endif
+                                                        @endforeach
+                                                    </div>
+                                                </div> 
+                                            </div> 
+                                        </div>  
     
                                     </div>
                                 </div>
@@ -313,5 +328,34 @@
   });
   
   </script>
+
+
+<script type="text/javascript">
+    $().ready(function(){
+        $('[rel="tooltip"]').tooltip();
+
+    });
+
+    function rotateCard(btn){
+        var $card = $(btn).closest('.card-container');
+        console.log($card);
+        if($card.hasClass('hover')){
+            $card.removeClass('hover');
+        } else {
+            $card.addClass('hover');
+        }
+    }
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-46172202-4', 'auto');
+  ga('send', 'pageview');
+
+</script>
 
 @endsection

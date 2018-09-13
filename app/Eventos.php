@@ -18,6 +18,11 @@ class Eventos extends Model
         return $this->belongsToMany('App\User','eventos_user','user_id','eventos_id');
     }
 
+    public function cronogramas()
+    {
+        return $this->hasMany('App\Cronogramas');
+    }
+
     //SCOPES
     public function scopeEventosInicio($query)
     {

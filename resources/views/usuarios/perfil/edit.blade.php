@@ -52,12 +52,12 @@
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
                   <a href="#">
-                    <img src="images/users/default.jpg" class="rounded-circle">
+                    <img src="../images/users/{{Auth::user()->avatar}}" class="rounded-circle">
                   </a>
                 </div>
               </div>
                     <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
-                    <div class="card-profile-actions py-4 mt-lg-0">
+                    <div class="card-profile-actions py-4 mt-lg-0 text-center">
                         <a href="/perfilEdit" class="btn btn-lg btn-github btn-icon mb-3 mb-sm-0">
                           <span class="btn-inner--icon"><i class="ni ni-circle-08"></i></span>
                           <span class="btn-inner--text">
@@ -95,7 +95,7 @@
             <div class="row">
               <div class="col-12">
                   <div class="d-flex">
-                      <div>
+                      <div class="d-xs-none">
                         <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
                             <i class="ni ni-single-02 text-primary"></i>
                         </div>
@@ -128,7 +128,7 @@
                                                     $fechaNacimiento=date("d/m/Y", strtotime(Auth::user()->fecha_nacimiento));
                                                 }
                                                 ?>
-                                            <input class="form-control datepicker" placeholder="Selecciona una fecha" type="text" value="{{$fechaNacimiento}}" id="fecha_nacimiento" name="fecha_nacimiento">
+                                            <input class="form-control datepicker" readonly placeholder="Selecciona una fecha" type="text" value="{{$fechaNacimiento}}" id="fecha_nacimiento" name="fecha_nacimiento">
                                             </div>
                                         </div>
                                     </h6>
@@ -193,7 +193,7 @@
               </div>
               <div class="col-12">
                     <div class="d-flex">
-                        <div>
+                        <div class="d-xs-none">
                         <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
                             <i class="ni ni-hat-3 text-primary"></i>
                         </div>

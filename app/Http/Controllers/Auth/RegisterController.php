@@ -92,7 +92,8 @@ class RegisterController extends Controller
                 'email' => trim($request->email),
                 'password' => bcrypt(trim($request->password)),
                 'tipo'=> 1,
-                'estado'=>1
+                'estado'=>1,
+                'avatar'=>'default.png'
             ]);
     
             if($user->save())

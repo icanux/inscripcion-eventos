@@ -71,7 +71,7 @@
               <div class="pt-4 text-center">
                 <h5 class="title">
                   <span class="d-block mb-1">Elmer Ramos</span>
-                  <small class="h6 text-muted">Desarrollador Web(backend)</small>
+                  <small class="h6 text-muted">Desarrollador </small>
                 </h5>
                 <div class="mt-3">
                   <a href="#" class="btn btn-warning btn-icon-only rounded-circle">
@@ -93,7 +93,7 @@
               <div class="pt-4 text-center">
                 <h5 class="title">
                   <span class="d-block mb-1">Diego Balbuena</span>
-                  <small class="h6 text-muted">Diseñador(interiores)</small>
+                  <small class="h6 text-muted">Diseñador</small>
                 </h5>
                 <div class="mt-3">
                   <a href="#" class="btn btn-primary btn-icon-only rounded-circle">

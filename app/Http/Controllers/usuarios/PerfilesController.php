@@ -174,7 +174,7 @@ class PerfilesController extends Controller
     public function misEventos()
     {
         $user_id=Auth::user()->id;
-        $eventosUser=EventosUser::AllEventosUser($user_id)->get();
+        $eventosUser=EventosUser::AllEventosUser($user_id,1)->get();
         $eventos=array();
         // return response()->json($eventosUser);
         if(count($eventosUser)>0)
@@ -193,7 +193,8 @@ class PerfilesController extends Controller
                     "descripcion"=>$evento->eventos->descripcion,
                     "fecha"=>$fecha,
                     "asistencia"=>$evento->asistencia,
-                    "certificado"=>$evento->certificado
+                    "certificado"=>$evento->certificado,
+                    "eventoId"=>$evento->eventos->id
                 ]);
                 
             }

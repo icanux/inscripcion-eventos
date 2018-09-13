@@ -5,9 +5,10 @@ namespace App\Http\Controllers\contenido;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use App\Http\Controllers\Controller;
+use App\EventosUser;
 
 use App\Eventos;
-use App\EventosUser;
+use Illuminate\Support\Facades\DB;
 
 use Auth;
 
@@ -38,42 +39,68 @@ class EventosController extends Controller
 
     }
 
-    public function inscripcion($id, $accion, $certificado)
+    public function inscripcion($id)
     {
         $user_id=Auth::user()->id;
-        //accion sera 0 si es inscripcion y 1 si se cancelara inscripcion
-        //Pasamos 3 en el estado paa que no filtre el estado
-        $eventosUser=EventosUser::RelacionEventoUser($id,$user_id,3)->get();
+        $evento=Eventos::find($id);
+        $eventosUser=EventosUser::RelacionEventoUser($evento->id,$user_id,1)->get();
+        $listaInscripciones=array();
 
+        $certificado=0;
         if(count($eventosUser)>0)
         {
-            $eventoUser=EventosUser::find($eventosUser[0]->id);
-            $eventoUser->certificado=$certificado;
-            $eventoUser->estado=$accion;
+            $certificado=$eventosUser[0]->certificado;
         }
-        else
+
+        foreach($eventosUser as $eventoUser)
         {
-            $eventoUser=new EventosUser([
-                'user_id'=>$user_id,
-                'eventos_id'=>$id,
-                'certificado'=>$certificado,
-                'asistencia'=>0,
-                'estado'=>1
-            ]);
+            array_push($listaInscripciones,$eventoUser->cronogramas_id);
         }
 
-        $eventoUser->save();
+        return view('contenido.eventos.inscripcion')
+                ->with('evento',$evento)
+                ->with('eventosUser',$eventosUser)
+                ->with('listaInscripciones',$listaInscripciones)
+                ->with('certificado',$certificado);
 
-        $evento=Eventos::find($id);
-        $eventosUserNew=EventosUser::RelacionEventoUser($evento->id,$user_id,1)->get();
+    }
 
-        return redirect('evento/'.$evento->id)
-                    ->with('evento',$evento)
-                    ->with('eventosUser',$eventosUser);
-        // return view('contenido.eventos.evento')
-        //         ->with('evento',$evento)
-        //         ->with('eventosUser',$eventosUserNew);
+    public function saveInscripcion(Request $request)
+    {
+        $user_id=Auth::user()->id;
+        $certificado=0;
+        if($request->certificado)
+        {
+            $certificado=1;
+        }
 
+        $edicon=DB::table('eventos_user')->where('user_id',$user_id)->where('eventos_id',$request->eventos_id)->update(['estado'=>0]);
+
+        if(count($request->ponencias)>0)
+        {
+            for($i=0;$i<count($request->ponencias);$i++)
+            {
+                $cronogramas_id=$request->ponencias[$i];
+                $eventoUser=EventosUSer::updateOrCreate(
+                    ['cronogramas_id'=>$cronogramas_id, 'user_id'=>$user_id],
+                    ['certificado'=>$certificado, 'estado'=>1, 'eventos_id'=>$request->eventos_id,'asistencia'=>0]
+                );
+            }
+        }
+
+        if(count($request->talleres)>0)
+        {
+            for($i=0;$i<count($request->talleres);$i++)
+            {
+                $cronogramas_id=$request->talleres[$i];
+                $eventoUser=EventosUSer::updateOrCreate(
+                    ['cronogramas_id'=>$cronogramas_id, 'user_id'=>$user_id],
+                    ['certificado'=>$certificado, 'estado'=>1, 'eventos_id'=>$request->eventos_id,'asistencia'=>0]
+                );
+            }
+        }
+
+        return redirect()->route('evento', ['id'=>$request->eventos_id]);
     }
 
 }

@@ -1,0 +1,318 @@
+
+.cardEventoClass .btn:hover,
+.cardEventoClass .btn:focus,
+.cardEventoClass .btn:active{
+    outline: 0 !important;
+}
+/* entire container, keeps perspective */
+.cardEventoClass .card-container {
+	  -webkit-perspective: 800px;
+   -moz-perspective: 800px;
+     -o-perspective: 800px;
+        perspective: 800px;
+        margin-bottom: 30px;
+}
+/* flip the pane when hovered */
+.cardEventoClass .card-container:not(.manual-flip):hover .card,
+.cardEventoClass .card-container.hover.manual-flip .card{
+	-webkit-transform: rotateY( 180deg );
+-moz-transform: rotateY( 180deg );
+ -o-transform: rotateY( 180deg );
+    transform: rotateY( 180deg );
+}
+
+
+.cardEventoClass .card-container.static:hover .card,
+.card-container.static.hover .card {
+	-webkit-transform: none;
+-moz-transform: none;
+ -o-transform: none;
+    transform: none;
+}
+/* flip speed goes here */
+.cardEventoClass .card {
+	 -webkit-transition: -webkit-transform .5s;
+   -moz-transition: -moz-transform .5s;
+     -o-transition: -o-transform .5s;
+        transition: transform .5s;
+-webkit-transform-style: preserve-3d;
+   -moz-transform-style: preserve-3d;
+     -o-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+	position: relative;
+}
+
+/* hide back of pane during swap */
+.cardEventoClass .front, .cardEventoClass .back {
+	-webkit-backface-visibility: hidden;
+   -moz-backface-visibility: hidden;
+     -o-backface-visibility: hidden;
+        backface-visibility: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: #FFF;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.14);
+}
+
+/* front pane, placed above back */
+.cardEventoClass .front {
+	z-index: 2;
+}
+
+/* back, initially hidden pane */
+.cardEventoClass .back {
+		-webkit-transform: rotateY( 180deg );
+   -moz-transform: rotateY( 180deg );
+     -o-transform: rotateY( 180deg );
+        transform: rotateY( 180deg );
+        z-index: 3;
+}
+
+.cardEventoClass .back .btn-simple{
+    position: absolute;
+    left: 0;
+    bottom: 4px;
+}
+/*        Style       */
+
+
+.cardEventoClass card{
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-radius: 4px;
+    color: #444444;
+}
+.cardEventoClass .card-container, .cardEventoClass .front, .cardEventoClass .back {
+	width: 100%;
+	height: 420px;
+	border-radius: 4px;
+}
+.cardEventoClass .card .cover{
+    height: 105px;
+    overflow: hidden;
+    border-radius: 4px 4px 0 0;
+}
+.cardEventoClass .card .cover img{
+    width: 100%;
+}
+.cardEventoClass .card .user{
+    border-radius: 50%;
+    display: block;
+    height: 120px;
+    margin: -55px auto 0;
+    overflow: hidden;
+    width: 120px;
+}
+.cardEventoClass .card .user img{
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 4px solid #FFFFFF;
+    width: 100%;
+}
+
+.cardEventoClass .card .content{
+    background-color: rgba(0, 0, 0, 0);
+    box-shadow: none;
+    padding: 10px 20px 20px;
+}
+.cardEventoClass .card .content .main {
+    /* min-height: 160px; */
+}
+.cardEventoClass .card .back .content .main {
+    height: 215px;
+}
+.cardEventoClass .card .name {
+    font-size: 22px;
+    line-height: 28px;
+    margin: 10px 0 0;
+    text-align: center;
+    text-transform: capitalize;
+}
+.cardEventoClass .card h5{
+    margin: 5px 0;
+    font-weight: 400;
+    line-height: 20px;
+}
+.cardEventoClass .card .profession{
+    color: #999999;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.cardEventoClass .card .footer {
+    border-top: 1px solid #EEEEEE;
+    color: #999999;
+    margin: 30px 0 0;
+    padding: 10px 0 0;
+    text-align: center;
+}
+.cardEventoClass .card .footer .social-links{
+    font-size: 18px;
+}
+.cardEventoClass .card .footer .social-links a{
+    margin: 0 7px;
+}
+.cardEventoClass .card .footer .btn-simple{
+    margin-top: -6px;
+}
+.cardEventoClass .card .header {
+    padding: 15px 20px;
+    height: 90px;
+}
+.cardEventoClass .card .motto{
+    border-bottom: 1px solid #EEEEEE;
+    color: #999999;
+    font-size: 14px;
+    font-weight: 400;
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.cardEventoClass .card .stats-container{
+	width: 100%;
+	margin-top: 50px;
+}
+.cardEventoClass .card .stats{
+	display: block;
+	float: left;
+	width: 33.333333%;
+	text-align: center;
+}
+
+.cardEventoClass .card .stats:first-child{
+	border-right: 1px solid #EEEEEE;
+}
+.cardEventoClass .card .stats:last-child{
+	border-left: 1px solid #EEEEEE;
+}
+.cardEventoClass .card .stats h4{
+	font-weight: 300;
+	margin-bottom: 5px;
+}
+.cardEventoClass .card .stats p{
+	color: #777777;
+}
+/*      Just for presentation        */
+
+.cardEventoClass .title{
+    color: #506A85;
+    text-align: center;
+    font-weight: 300;
+    font-size: 44px;
+    margin-bottom: 90px;
+    line-height: 90%;
+}
+.cardEventoClass .title small{
+    font-size: 17px;
+    color: #999;
+    text-transform: uppercase;
+    margin: 0;
+}
+.cardEventoClass .space-30{
+	height: 30px;
+	display: block;
+}
+.cardEventoClass .space-50{
+    height: 50px;
+    display: block;
+}
+.cardEventoClass .space-200{
+    height: 200px;
+    display: block;
+}
+.cardEventoClass .white-board{
+    background-color: #FFFFFF;
+    min-height: 200px;
+    padding: 60px 60px 20px;
+}
+.cardEventoClass .ct-heart{
+    color: #F74933;
+}
+
+ .cardEventoClass pre.prettyprint{
+    background-color: #ffffff;
+    border: 1px solid #999;
+    margin-top: 20px;
+    padding: 20px;
+    text-align: left;
+}
+.cardEventoClass .atv, .str{
+    color: #05AE0E;
+}
+.cardEventoClass .tag, .cardEventoClass .pln, .cardEventoClass .kwd{
+     color: #3472F7;
+}
+.cardEventoClass .atn{
+  color: #2C93FF;
+}
+.cardEventoClass .pln{
+   color: #333;
+}
+.cardEventoClass .com{
+    color: #999;
+}
+
+.cardEventoClass .btn-simple{
+    opacity: .8;
+    color: #666666;
+    background-color: transparent;
+}
+
+.cardEventoClass .btn-simple:hover,
+.cardEventoClass .btn-simple:focus{
+    background-color: transparent;
+    box-shadow: none;
+    opacity: 1;
+}
+.cardEventoClass .btn-simple i{
+    font-size: 16px;
+}
+
+.cardEventoClass .navbar-brand-logo{
+    padding: 0;
+}
+.cardEventoClass .navbar-brand-logo .logo{
+    border: 1px solid #333333;
+    border-radius: 50%;
+    float: left;
+    overflow: hidden;
+    width: 60px;
+}
+.cardEventoClass .navbar .navbar-brand-logo .brand{
+    color: #FFFFFF;
+    float: left;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 20px;
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 60px;
+}
+.cardEventoClass .navbar-default .navbar-brand-logo .brand{
+    color: #555;
+}
+
+
+/*       Fix bug for IE      */
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+    .cardEventoClass .front, .cardEventoClass .back{
+        -ms-backface-visibility: visible;
+        backface-visibility: visible;
+    }
+
+    .cardEventoClass .back {
+        visibility: hidden;
+        -ms-transition: all 0.2s cubic-bezier(.92,.01,.83,.67);
+    }
+    .cardEventoClass .front{
+        z-index: 4;
+    }
+    .cardEventoClass .card-container:not(.manual-flip):hover .back,
+    .cardEventoClass .card-container.manual-flip.hover .back{
+        z-index: 5;
+        visibility: visible;
+    }
+}
+
+.img-circle {
+    border-radius: 50%;
+  }
