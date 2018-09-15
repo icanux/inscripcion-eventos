@@ -15,6 +15,7 @@ use App\UsersFacultades;
 use App\User;
 use Carbon\Carbon;
 use App\EventosUser;
+use Image;
 
 class PerfilesController extends Controller
 {
@@ -136,7 +137,8 @@ class PerfilesController extends Controller
         $user_id=Auth::user()->id;
         $user=User::find($user_id);
         
-        
+        $user->nombres=$request->nombres;
+        $user->apellidos=$request->apellidos;
         $user->fecha_nacimiento=$request->fechaNacimiento;
         $user->telefono_fijo=$request->telefono_fijo;
         $user->telefono_movil=$request->telefono_movil;
@@ -202,4 +204,51 @@ class PerfilesController extends Controller
         return view('usuarios.miseventos.index')
                 ->with('eventos',$eventos);
     }
+
+    public function cambiarPass()
+    {
+        return view('usuarios.perfil.cambiar');
+    }
+
+    public function savePassword(Request $request)
+    {
+        $user_id=Auth::user()->id;
+        $user=User::find($user_id);
+        $user->password= bcrypt(trim($request->password));
+        if($user->save())
+        {
+            return redirect()->route('perfil');
+        }
+        else
+        {
+            return view('usuarios.perfil.cambiar');
+        }
+    }
+
+    public function imagenUpdate(Request $request)
+    {
+        $user_id=Auth::user()->id;
+        $user=User::find($user_id);
+        $img_nombre="default.png";
+        if($request->file('imagen')){
+            $image=$request->file('imagen');
+            $random= str_random(10);
+            $input['imagename']=time().$random.'.'.$image->getClientOriginalExtension();
+            $destinationPath=public_path('/thumbnail');
+            $img=Image::make($image->getRealPath());
+            $img->resize(200,200, function ($constraint){
+            $constraint->aspectRatio();
+            } )->save($destinationPath.'/'.$input['imagename']);
+            $destinationPath=public_path('/images/users');
+            $image->move($destinationPath,$input['imagename']);
+            $img_nombre=$input['imagename'];
+        }
+
+        $user->avatar=$img_nombre;
+        $user->save();
+
+        return redirect()->route('perfil');
+
+    }
+
 }

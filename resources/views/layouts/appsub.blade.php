@@ -29,7 +29,12 @@
 </head>
 
 <body>
-          
+  
+    <!-- Modal -->
+<div class="modal fade" id="mainModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    
+</div>
+
         <div class="modal fade <?php if(isset($registrado)){ ?> show <?php } ?>" style="display: <?php if(isset($registrado)){ ?> block <?php } else{ ?> none <?php } ?>; padding-right: 17px;" id="modal-notification" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
             <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
                 <div class="modal-content bg-gradient-primary">
@@ -105,7 +110,7 @@
                           </a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link nav-link-icon" href="#" target="_blank" data-toggle="tooltip" title="Ir a Github">
+                          <a class="nav-link nav-link-icon" href="https://github.com/icanux/inscripcion-eventos" target="_blank" data-toggle="tooltip" title="Ir a Github">
                             <i class="fa fa-github"></i>
                             <span class="nav-link-inner--text d-lg-none">Github</span>
                           </a>
@@ -115,13 +120,25 @@
                             <div class="dropdown">
                               <button class="btn btn-secondary bg-transparent border-none dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border:none;box-shadow:none;">
                                   <small class="text-white font-weight-bold">{{Auth::user()->nombres .' '. Auth::user()->apellidos}}</small>
-                                <img src="../images/users/{{Auth::user()->avatar}}" class="rounded-circle" style="height: 28px;">
+                                <img src="../images/users/{{Auth::user()->avatar}}" class="rounded-circle bg-white" style="height: 28px;">
                               </button>
                               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                  <a class="dropdown-item" href="{{ route('perfil') }}">Mi perfil</a>
-                                  <a class="dropdown-item" href="{{ route('logout') }}"
-                                  onclick="event.preventDefault();
-                                  document.getElementById('logout-form').submit();">Salir</a>
+                                  <a class="dropdown-item" href="{{ route('perfil') }}">
+                                      <i class="ni ni-circle-08"></i> Mi perfil
+                                    </a>
+                                    @if(Auth::user()->tipo==2)
+                                    <a class="dropdown-item" href="{{ route('dashboard') }}">
+                                        <i class="ni ni-briefcase-24"></i> Dashboard
+                                    </a>
+                                    @endif
+                                    <a class="dropdown-item" href="{{ route('cambiar') }}">
+                                        <i class="ni ni-lock-circle-open"></i> Cambiar contraseña
+                                      </a>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                      <i class="ni ni-button-power"></i> Salir
+                                    </a>
                               </div>
                             </div>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

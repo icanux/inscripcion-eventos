@@ -42,3 +42,19 @@ function notification(title, message, type, from, align) {
       }
     });
   }
+
+  function actualizarMenu(ruta)
+  {
+    enlace=ruta+"Menu";
+    $('.menu > li').each(function(){
+        if($(this).prop('id')==enlace){
+          $(this).addClass('active');
+        }
+        else
+        {
+            $(this).removeClass('active');
+        }
+      });
+
+      if($('.close-layer')!=undefined)$('.close-layer').click();
+  }

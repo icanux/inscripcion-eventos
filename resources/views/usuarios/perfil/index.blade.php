@@ -23,6 +23,11 @@
         return $return;
     }
 ?>
+
+@if(isset($msg))
+<input type="hidden" name="msg" id="msg" readonly value="{{$msg}}" data-msgType="{{$msgType}}">
+@endif
+
 <main class="profile-page">
     <section class="section-profile-cover section-shaped my-0">
       <!-- Circles background -->
@@ -49,12 +54,18 @@
             <div class="row justify-content-center">
               <div class="col-lg-3 order-lg-2">
                 <div class="card-profile-image">
-                  <a href="#">
-                    <img src="images/users/{{Auth::user()->avatar}}" class="rounded-circle">
-                  </a>
+                  
+                    <img src="images/users/{{Auth::user()->avatar}}" class="rounded-circle" id="avatar">
+                  
                 </div>
               </div>
               <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
+                  <br class="d-lg-none d-xs-none">
+                  <br class="d-lg-none d-xs-none">
+                  <br class="d-lg-none d-xs-none">
+                  <br class="d-lg-none d-xs-none">
+                  <br class="d-lg-none d-xs-none">
+                  <br class="d-lg-none d-xs-none">
                 <div class="card-profile-actions py-4 mt-lg-0 text-center">
                     <a href="/perfilEdit" class="btn btn-lg btn-github btn-icon mb-3 mb-sm-0">
                       <span class="btn-inner--icon"><i class="ni ni-circle-08"></i></span>
@@ -76,7 +87,8 @@
             <div class="text-center mt-5">
               <h3>{{Auth::user()->nombres .' '. Auth::user()->apellidos}}
               </h3>
-            <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>{{Auth::user()->email}}</div>
+              <div class="h6 font-weight-300"><i class="ni location_pin mr-2"></i>{{Auth::user()->email}}</div>
+              <button class="btn btn-1 btn-outline-danger pt-1 pb-1 pl-2 pr-2 bg-danger text-white" style="font-size:13px;text-transform:none;" type="button" data-toggle="modal" data-target="#mainModal" id="openModal"><i class="ni ni-image"></i> Cambiar Imagen</button>
               {{-- <div class="h6 mt-4"><i class="ni business_briefcase-24 mr-2"></i>Solution Manager - Creative Tim Officer</div>
               <div><i class="ni education_hat mr-2"></i>University of Computer Science</div> --}}
             </div>
@@ -94,7 +106,7 @@
                   <div class="d-flex">
                       <div class="d-xs-none">
                         <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
-                            <i class="ni ni-single-02 text-primary"></i>
+                            <i class="ni ni-badge "></i>
                         </div>
                       </div>
                       <div class="pl-4 w-100">
@@ -102,6 +114,44 @@
                         
 
                         <ul class="list-unstyled mt-5 d-flex row">
+                            <li class="py-2 col-lg-4 col-md-">
+                                <div class="d-flex align-items-start">
+                                  <div>
+                                    <div class="badge badge-circle badge-success mr-3">
+                                      <i class="ni ni-calendar-grid-58"></i>
+                                    </div>
+                                  </div>
+                                  <div>
+                                    <h6 class="mt-1 font-weight-bold">Nombres:</h6>
+                                    <h6 class="mb-0">
+                                        @if(Auth::user()->nombres=='')
+                                        Sin datos
+                                      @else
+                                        {{Auth::user()->nombres}}
+                                      @endif
+                                    </h6>
+                                  </div>
+                                </div>
+                            </li>
+                              <li class="py-2 col-lg-4 col-md-">
+                                  <div class="d-flex align-items-start">
+                                    <div>
+                                      <div class="badge badge-circle badge-success mr-3">
+                                        <i class="ni ni-calendar-grid-58"></i>
+                                      </div>
+                                    </div>
+                                    <div>
+                                      <h6 class="mt-1 font-weight-bold">Apellidos:</h6>
+                                      <h6 class="mb-0">
+                                          @if(Auth::user()->apellidos=='')
+                                          Sin datos
+                                        @else
+                                          {{Auth::user()->apellidos}}
+                                        @endif
+                                      </h6>
+                                    </div>
+                                  </div>
+                              </li>
                             <li class="py-2 col-lg-4 col-md-">
                               <div class="d-flex align-items-start">
                                 <div>
@@ -296,5 +346,110 @@
       </div>
     </section>
   </main>
+
+<script>
+
+$( document ).ready(function() {
+
+  if( $('#msg').val()!=undefined )
+  {
+      let tipo=$('#msg').data('msgType');
+      let titulo='';
+      let mensaje=$('#msg').val();
+      if(tipo=="success")
+      {
+          titulo="EXITO"
+      }
+      else if(tipo=="error")
+      {
+          titulo="ERROR"; 
+      }
+      notification(titulo, mensaje,tipo,'top','right');
+  }
+
+  $('#openModal').on('click',function(){
+
+    let imagen=$('#avatar').attr('src');
+
+    $('#mainModal').html('<div class="modal-dialog modal-dialog-centered" role="document">\
+    <div class="modal-content">\
+    <form action="imagenUpdate" method="POST" enctype="multipart/form-data" id="frmImagen" name="frmImagen">\
+      <input type="hidden" name="_token" value="{{ csrf_token() }}">\
+      <div class="modal-header">\
+        <h5 class="modal-title" id="exampleModalLabel">Cambiar Imagen De Perfil</h5>\
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">\
+          <span aria-hidden="true">&times;</span>\
+        </button>\
+      </div>\
+      <div class="modal-body">\
+          <div class="row">\
+            <div class="col-lg-6 col-md-6 col-sm-12">\
+                <div class="form-group bmd-form-group mt-2">\
+                  <label class="" for="imagen"> Imagen Actual</label>\
+                      <img src="'+imagen+'" class="img-rect" alt="" id="imgAnterior" data-origen="">\
+                </div>\
+            </div>\
+            <div class="col-lg-6 col-md-6 col-sm-12">\
+                <div class="form-group bmd-form-group mt-2">\
+                      <div class="p-1">\
+                          <label class="" for="imagen"> Nueva Imagen</label>\
+                          <img src="images/users/default.png" class="img-rect" alt="" id="fileImagenEdit" data-origen="">\
+                      </div>\
+                      <div class="text-center">\
+                        <label for="imagenEdit" class="bg-danger text-white border-round p-2 d-flex align-items-center text-center justify-content-center cursor-p">\
+                          <i class="material-icons">\
+                                          add_photo_alternate\
+                          </i>Seleccionar Una Imagen</label>\
+                        <input type="file" class="file-input d-none" id="imagenEdit" name="imagen" >\
+                      </div>\
+                  </div>\
+                  <div class="text-center">\
+                  </div>\
+          </div>\
+      </div>\
+      <div class="modal-footer">\
+        <button type="submit" class="btn btn-primary text-white">Guardar Cambios</button>\
+      </div>\
+      </form>\
+    </div>\
+  </div>');
+
+  $('#imagenEdit').change(function(){
+    var curElement = $('#fileImagenEdit');
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        // get loaded data and render thumbnail.
+        curElement.attr('src', e.target.result);
+    };
+    
+    if(this.files[0])
+    {
+      // read the image file as a data URL.
+      reader.readAsDataURL(this.files[0]);
+    }
+    else
+    {
+      curElement.attr('src','images/users/default.png');
+    }
+  });
+
+
+    $('#frmImagen').submit(function(e){
+      e.preventDefault();
+      if( $('#imagenEdit').val()=='' || $('#imagenEdit').val()==undefined )
+      {
+        notification('INFORMACION', 'Debe seleccionar una nueva imagen para asignar.','warning','top','right');
+      }
+      else
+      {
+        document.getElementById("frmImagen").submit();
+      }
+    });
+
+  });
+
+});
+
+</script>
 
 @endsection

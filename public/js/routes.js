@@ -1,9 +1,9 @@
 //---------------RUTAS ACCESSO
 //SUPER ADMIN
-// $('#empleados').on('click',function(){
-// 	router_link('/empleados');
-// 	actualizarMenu('empleados');
-// });
+$('#usuarios').on('click',function(){
+	router_link('/usuarios');
+	actualizarMenu('usuarios');
+});
 
 //-----------FUNCION ENLACENTE
 function router_link(ruta){

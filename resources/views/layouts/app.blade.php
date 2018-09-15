@@ -29,35 +29,13 @@
 </head>
 
 <body>
-          
-        <div class="modal fade <?php if(isset($registrado)){ ?> show <?php } ?>" style="display: <?php if(isset($registrado)){ ?> block <?php } else{ ?> none <?php } ?>; padding-right: 17px;" id="modal-notification" tabindex="-1" role="dialog" aria-labelledby="modal-notification" aria-hidden="true">
-            <div class="modal-dialog modal-danger modal-dialog-centered modal-" role="document">
-                <div class="modal-content bg-gradient-primary">
-        
-                    <div class="modal-header">
-                        <h6 class="modal-title" id="modal-title-notification">Informacion de registro</h6>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">×</span>
-                        </button>
-                    </div>
-        
-                    <div class="modal-body">
-        
-                        <div class="py-3 text-center">
-                            <i class="ni ni-bell-55 ni-3x"></i>
-                            <h4 class="heading mt-4">Registro exitoso!</h4>
-                            <p>Te recomendamos completar la informacion de tu perfil para que podamos brindarte la informacion mas relevante de acuerdo a tus necesidades, Gracias.</p>
-                        </div>
-        
-                    </div>
-        
-                    <div class="modal-footer">
-                        <a class="btn btn-link text-primary cursor-p bg-white" id="completar">Ok, Completar mi perfil</a>
-                        <a class="btn btn-link text-white cursor-p" id="close-modal">En otro momento</a>
-                    </div>
-                </div>
-            </div>
-          </div>
+
+  <!-- Modal -->
+<div class="modal fade" id="mainModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    
+  </div>
+  
+
         <header class="header-global">
                 <nav id="navbar-main" class="navbar navbar-main navbar-expand-lg navbar-transparent navbar-light headroom">
                   <div class="container">
@@ -105,7 +83,7 @@
                           </a>
                         </li>
                         <li class="nav-item">
-                          <a class="nav-link nav-link-icon" href="#" target="_blank" data-toggle="tooltip" title="Ir a Github">
+                          <a class="nav-link nav-link-icon" href="https://github.com/icanux/inscripcion-eventos" target="_blank" data-toggle="tooltip" title="Ir a Github">
                             <i class="fa fa-github"></i>
                             <span class="nav-link-inner--text d-lg-none">Github</span>
                           </a>
@@ -115,13 +93,25 @@
                             <div class="dropdown">
                               <button class="btn btn-secondary bg-transparent border-none dropdown-toggle text-white" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="border:none;box-shadow:none;">
                                   <small class="text-white font-weight-bold">{{Auth::user()->nombres .' '. Auth::user()->apellidos}}</small>
-                                <img class="bg-white" src="images/users/{{Auth::user()->avatar}}" class="rounded-circle" style="height: 28px;">
+                                <img src="images/users/{{Auth::user()->avatar}}" class="rounded-circle bg-white" style="height: 28px;">
                               </button>
                               <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                  <a class="dropdown-item" href="{{ route('perfil') }}">Mi perfil</a>
+                                  <a class="dropdown-item" href="{{ route('perfil') }}">
+                                    <i class="ni ni-circle-08"></i> Mi perfil
+                                  </a>
+                                  @if(Auth::user()->tipo==2)
+                                  <a class="dropdown-item" href="{{ route('dashboard') }}">
+                                      <i class="ni ni-briefcase-24"></i> Dashboard
+                                  </a>
+                                  @endif
+                                  <a class="dropdown-item" href="{{ route('cambiar') }}">
+                                      <i class="ni ni-lock-circle-open"></i> Cambiar contraseña
+                                    </a>
                                   <a class="dropdown-item" href="{{ route('logout') }}"
                                   onclick="event.preventDefault();
-                                  document.getElementById('logout-form').submit();">Salir</a>
+                                  document.getElementById('logout-form').submit();">
+                                    <i class="ni ni-button-power"></i> Salir
+                                  </a>
                               </div>
                             </div>
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

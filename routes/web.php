@@ -37,6 +37,9 @@ Route::post('/registerUser','Auth\RegisterController@registerUser')->name('regis
 */
 Route::get('/perfil','usuarios\PerfilesController@index')->name('perfil');
 Route::get('/perfilEdit','usuarios\PerfilesController@edit')->name('perfilEdit');
+Route::get('/cambiar','usuarios\PerfilesController@cambiarPass')->name('cambiar');
+Route::post('/imagenUpdate','usuarios\PerfilesController@imagenUpdate')->name('imagenUpdate');
+Route::post('/savePassword','usuarios\PerfilesController@savePassword')->name('savePassword');
 Route::get('/getFacultades/{universidades_id}','usuarios\PerfilesController@getFacultades');
 Route::post('/savePerfil','usuarios\PerfilesController@savePerfil');
 Route::get('/miseventos','usuarios\PerfilesController@misEventos');
@@ -50,3 +53,16 @@ Route::get('/eventos','contenido\EventosController@index')->name('eventos');
 Route::get('/evento/{id}','contenido\EventosController@infoEvento')->name('evento');
 Route::get('/inscripcion/{id}','contenido\EventosController@inscripcion')->middleware('auth');
 Route::post('/saveInscripcion','contenido\EventosController@saveInscripcion')->middleware('auth');
+
+
+/*
+|--------------------------------------------------------------------------
+| DASHBOARD
+|--------------------------------------------------------------------------
+*/
+Route::get('/dashboard','admin\DashboardController@index')->name('dashboard');
+Route::get('/admin.usuarios','admin\DashboardController@index');
+Route::get('/searchUsuarios','admin\DashboardController@searchUsuarios');
+Route::post('/registrarUsuario','admin\DashboardController@registrarUsuario');
+Route::get('/getDetalleEvento/{id}','admin\DashboardController@getDetalleEvento');
+

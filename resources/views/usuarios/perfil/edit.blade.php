@@ -56,12 +56,19 @@
                   </a>
                 </div>
               </div>
-                    <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
+                <div class="col-lg-4 order-lg-3 text-lg-right align-self-lg-center">
+                    <br class="d-lg-none d-xs-none">
+                    <br class="d-lg-none d-xs-none">
+                    <br class="d-lg-none d-xs-none">
+                    <br class="d-lg-none d-xs-none">
+                    <br class="d-lg-none d-xs-none">
+                    <br class="d-lg-none d-xs-none">
+
                     <div class="card-profile-actions py-4 mt-lg-0 text-center">
                         <a href="/perfilEdit" class="btn btn-lg btn-github btn-icon mb-3 mb-sm-0">
                           <span class="btn-inner--icon"><i class="ni ni-circle-08"></i></span>
                           <span class="btn-inner--text">
-                            <span class="text-white">Editar Perfil</span></span>
+                            <span class="text-white">Editar Perfil</span></span>@csrfz
                         </a>
                     </div>
                   </div>
@@ -93,6 +100,60 @@
             <br><br>
             <form  autocomplete="off" id="frmEditPerfil">
             <div class="row">
+
+                    <div class="col-12">
+                            <div class="d-flex">
+                                <div class="d-xs-none">
+                                  <div class="icon icon-lg icon-shape bg-gradient-white shadow rounded-circle text-primary">
+                                      <i class="ni ni-badge"></i>
+                                  </div>
+                                </div>
+                                <div class="pl-4 w-100">
+                                  <h4 class="display-3 mt-2">Informacion de usuario</h4>
+                                  
+          
+                                  <ul class="list-unstyled mt-5 d-flex row">
+                                      <li class="py-2 col-lg-4 col-md-6">
+                                          <div class="d-flex align-items-start">
+                                            <div>
+                                              <div class="badge badge-circle badge-success mr-3">
+                                                    <i class="ni ni-lock-circle-open"></i>
+                                              </div>
+                                            </div>
+                                            <div>
+                                                <h6 class="mt-1 font-weight-bold">Nueva Contraseña:</h6>
+                                                <h6 class="mb-0">
+                                                    <div class="form-group">
+                                                        <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" maxlength="300" 
+                                                    </div>
+                                                </h6>
+                                            </div>
+                                          </div>
+                                      </li>
+                                      <li class="py-2 col-lg-4 col-md-6">
+                                            <div class="d-flex align-items-start">
+                                              <div>
+                                                <div class="badge badge-circle badge-success mr-3">
+                                                        <i class="ni ni-lock-circle-open"></i>  
+                                                </div>
+                                              </div>
+                                              <div>
+                                                  <h6 class="mt-1 font-weight-bold">Repetir Nueva Contraseña:</h6>
+                                                  <h6 class="mb-0">
+                                                      <div class="form-group">
+                                                          <input type="password" class="form-control" id="nuevo_password" name="nuevo_password" placeholder="Repetir  Contraseña" maxlength="300" 
+                                                      </div>
+                                                  </h6>
+                                              </div>
+                                            </div>
+                                        </li>
+                                  </ul>
+          
+          
+                                </div>
+                            </div>
+                    </div>
+
               <div class="col-12">
                   <div class="d-flex">
                       <div class="d-xs-none">
@@ -104,7 +165,43 @@
                         <h4 class="display-3 mt-2">Informacion de perfil</h4>
                             <input type="hidden" id="token" name="token" readonly="true" value="{{csrf_token()}}">
                             <ul class="list-unstyled mt-5 d-flex row">
-                                <li class="py-2 col-lg-4 col-md-">
+                                
+
+                                <li class="py-2 col-lg-4 col-md-6">
+                                    <div class="d-flex align-items-start">
+                                    <div>
+                                        <div class="badge badge-circle badge-success mr-3">
+                                                <i class="ni ni-single-copy-04"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h6 class="mt-1 font-weight-bold">Nombres:</h6>
+                                        <h6 class="mb-0">
+                                            <div class="form-group">
+                                                <input type="text" min="0" class="form-control required" required id="nombres" name="nombres" placeholder="Nombres" maxlength="300" value="{{Auth::user()->nombres}}">
+                                            </div>
+                                        </h6>
+                                    </div>
+                                    </div>
+                                </li>
+                                <li class="py-2 col-lg-4 col-md-6">
+                                    <div class="d-flex align-items-start">
+                                    <div>
+                                        <div class="badge badge-circle badge-success mr-3">
+                                                <i class="ni ni-single-copy-04"></i>
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <h6 class="mt-1 font-weight-bold">Apellidos:</h6>
+                                        <h6 class="mb-0">
+                                            <div class="form-group">
+                                                <input type="text" min="0" class="form-control required" required id="apellidos" name="apellidos" placeholder="Apellidos" maxlength="300" value="{{Auth::user()->apellidos}}">
+                                            </div>
+                                        </h6>
+                                    </div>
+                                    </div>
+                                </li>
+                                <li class="py-2 col-lg-4 col-md-6">
                                 <div class="d-flex align-items-start">
                                     <div>
                                     <div class="badge badge-circle badge-success mr-3">
@@ -115,7 +212,7 @@
                                     <h6 class="mt-1 font-weight-bold">Fecha de nacimiento:</h6>
                                     <h6 class="mb-0">
                                         <div class="form-group">
-                                            <div class="input-group input-group-alternative">
+                                            <div class="input-group input-group-alternative" style="width:90%;">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"><i class="ni ni-calendar-grid-58"></i></span>
                                                 </div>
@@ -135,7 +232,7 @@
                                     </div>
                                 </div>
                                 </li>
-                                <li class="py-2 col-lg-4 col-md-">
+                                <li class="py-2 col-lg-4 col-md-6">
                                     <div class="d-flex align-items-start">
                                     <div>
                                         <div class="badge badge-circle badge-success mr-3">
@@ -152,7 +249,7 @@
                                     </div>
                                     </div>
                                 </li>
-                                <li class="py-2 col-lg-4 col-md-">
+                                <li class="py-2 col-lg-4 col-md-6">
                                     <div class="d-flex align-items-start">
                                     <div>
                                         <div class="badge badge-circle badge-success mr-3">
@@ -169,7 +266,7 @@
                                     </div>
                                     </div>
                                 </li>
-                                <li class="py-2 col-lg-4 col-md-">
+                                <li class="py-2 col-lg-4 col-md-6">
                                     <div class="d-flex align-items-start">
                                     <div>
                                         <div class="badge badge-circle badge-success mr-3">

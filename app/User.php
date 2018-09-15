@@ -29,4 +29,10 @@ class User extends Authenticatable
         $query->where('email',$email);
     }
 
+    public function scopeAllUsuarios($query, $search)
+    {
+        $query->where('tipo',1)
+              ->orderBy('nombres');
+    }
+
 }
